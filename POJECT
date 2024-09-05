@@ -1,0 +1,149 @@
+#include <stdio.h>
+#include <string.h>
+struct Contact{
+    char nom[100][100];
+    char email[100][100];
+    char Num_telephone[100][100];
+   
+}arg;
+int size = 0;
+// function 1
+void ajouter_contact();
+// function 2
+void Afficher_contact();
+// funtion 3
+void  Modifier_contact();
+//function 4
+void Supprimer_contact();
+//function 5
+void Rechercher_contact();
+int main() {
+    struct Contact arg;
+    int choix;
+   
+    do{
+    printf("_________________________________________________________________________________________________________________\n");	
+     printf("[1]: Ajouter un Contact \n");
+     printf("[2]: Modifier un Contact\n");
+     printf("[3]: Supprimer un Contact\n");
+     printf("[4]: Afficher Tous les Contacts\n");
+     printf("[5]: Rechercher un Contact\n");
+	  printf(" enter le choix\n"); 
+     scanf("%d",&choix);
+     printf("____________________________________________________________________________________________________________\n");
+   switch(choix){
+       
+       case 1:
+       ajouter_contact();
+       break;
+        case 2:
+        Modifier_contact();
+       break;
+        case 3:
+        Supprimer_contact();
+       break;
+        case 4:
+        Afficher_contact();
+       break;
+        case 5:
+        Rechercher_contact();
+       break;
+         default:
+                printf("Choix invalide!\n");
+   
+}
+   }while(choix != 6);
+
+    return 0;
+}
+
+
+void ajouter_contact(){
+      printf("enter tailler\t");
+    scanf("%d",&size);
+    for(int i=0;i<size;i++){
+    printf("enter nom personne\t");
+    scanf(" %[^\n]s",arg.nom[i]);
+     printf("enter email\t");
+    scanf(" %[^\n]s",arg.email[i]);
+     printf("enter  telephone\t");
+    scanf(" %[^\n]s",arg.Num_telephone[i]);
+     printf("____________________________________________________________________________________________________________\n");
+}
+}
+
+
+
+void  Modifier_contact() {
+    char verifie_nom[100];
+    printf("enter nom personne you want to Modifier\t");
+    scanf(" %[^\n]s",verifie_nom);
+    for(int i=0;i<size;i++){
+    if(strcmp(verifie_nom,arg.nom[i]) == 0 ){
+     printf("enter nom personne\t");
+    scanf(" %[^\n]s",arg.nom[i]);
+     printf("enter email\t");
+    scanf(" %[^\n]s",arg.email[i]);
+     printf("enter  telephone\t");
+    scanf(" %[^\n]s",arg.Num_telephone[i]);
+ printf("____________________________________________________________________________________________________________\n");
+    }
+    else
+    printf(" ERROR\n");
+}
+}
+
+void Afficher_contact(){
+    for(int i=0;i<size;i++){
+    printf("nom est %s ||email est %s  ||telephone %s  \n",arg.nom[i],arg.email[i],arg.Num_telephone[i]);
+    
+    }
+}
+
+void Supprimer_contact(){
+	char supprime_nom[100];
+	int i,j,x=0;
+    printf("enter nom personne you want to Supprimer\t");
+    scanf(" %[^\n]s",supprime_nom);
+	for( i=0 ; i<size;i++){
+		if(strcmp(supprime_nom,arg.email[i])==0)
+		{
+		for( j=i+1;j<size;j++){
+			strcpy(arg.nom[i],arg.nom[j]);
+			strcpy(arg.email[i],arg.email[j]);
+			strcpy(arg.Num_telephone[i],arg.Num_telephone[j]);
+					}
+					size--;
+					
+				}else{
+					printf(" le nom incrouvale\n");
+				}
+ printf("____________________________________________________________________________________________________________\n");
+	}
+
+}
+
+void Rechercher_contact(){
+ char verifie_nom[100];
+    printf("enter nom personne you want to Rechercher\t");
+    scanf(" %[^\n]s",verifie_nom);
+    for(int i=0;i<size;i++){
+    if(strcmp(verifie_nom,arg.nom[i]) == 0 ){
+       for(int i=0;i<size;i++){
+    printf("nom est %s ||email est %s  ||telephone %s  \n",arg.nom[i],arg.email[i],arg.Num_telephone[i]);
+     printf("____________________________________________________________________________________________________________\n");
+    }
+    }
+
+}
+
+    
+}
+
+
+
+
+
+
+
+
